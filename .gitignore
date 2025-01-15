@@ -1,0 +1,27 @@
+.yarn/
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# envs
+.env
+
+# libs
+node_modules
+
+# dist
+dist
+
+# cdk
+cdk.context.json
+cdk.out
+cdk.staging
+
+# pycache
+__pycache__
+
+# IDE
+.idea
+.vscode
