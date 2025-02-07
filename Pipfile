@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aws-cdk-lib = "==2.137.0"
+constructs = "<11.0.0,>=10.0.0"
+fastapi = "==0.108.0"
+mangum = "==0.17.0"
+requests = "==2.31.0"
+uvicorn = "==0.29.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"

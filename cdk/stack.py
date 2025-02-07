@@ -60,6 +60,15 @@ class FastapiServerlessStack(Stack):
             timeout=Duration.seconds(29),
         )
 
+        latest_version = fastapi_handler.current_version
+        rollback_version = 2
+        alias = lambda_.Alias(
+            self,
+            "FastApiHandlerAlias",
+            alias_name="prod",
+            version=latest_version,
+        )
+
         http_api = HttpApi(
             self,
             "HttpApiGateway",

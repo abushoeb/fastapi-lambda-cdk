@@ -21,6 +21,7 @@ cdk.staging
 
 # pycache
 __pycache__
+python/
 
 # IDE
 .idea

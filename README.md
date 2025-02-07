@@ -24,7 +24,7 @@ This project demonstrates how to deploy a FastAPI application as a serverless fu
 - Python 3.11+
 - AWS CDK CLI
 - Docker (for local development and asset bundling)
-- Python package management(i prefer [uv](https://docs.astral.sh/uv/) `brew install uv`)
+- Python package management(pipenv (`brew install pipenv`) or uv (`brew install uv`))
 
 ### Deployment
 
@@ -32,14 +32,15 @@ This project demonstrates how to deploy a FastAPI application as a serverless fu
 $ git clone https://github.com/johnshumon/fastapi-lambda-cdk.git && cd fastapi-lambda-cdk
 
 # Create and activate venv
-$ uv venv && source .venv/bin/activate
+$ pipenv shell
 
 # confirm that venv python is beiong used
 $ which python # should point to  /path/to/fastapi-lambda-cdk/.venv/bin/python
 
 # Install dependencies
-$ uv pip install -r ./api/requirements.txt
-$ uv pip install -r ./cdk/requirements.txt
+$ pipenv install
+$ pip install -r ./api/requirements.txt --platform linux_x86_64 --target ./python --only-binary=:all:
+$ pip install -r ./cdk/requirements.txt --platform linux_x86_64 --target ./python --only-binary=:all:
 
 # Deploy to AWS
 $ cd cdk
