@@ -63,9 +63,6 @@ $ cdk deploy
 ```bash
 $ git clone https://github.com/johnshumon/fastapi-lambda-cdk.git && cd fastapi-lambda-cdk/serverless
 
-# Create and activate venv
-$ pipenv shell
-
 # confirm that venv python is beiong used
 $ pnpm install
 
