@@ -6,17 +6,26 @@ This project demonstrates how to deploy a FastAPI application as a serverless fu
 
 ## Project Structure
 ```
-├── api/ # FastAPI application
-│   ├── __init__.py
-│   ├── main.py
-│   └── requirements.txt
-├── cdk/ # CDK infrastructure
-│   ├── __init__.py
-│   ├── cdk.json
-│   ├── cdk.py
-│   ├── stack.py
-│   └── requirements.txt
-├── README.md
+.
+├── cdk
+│   ├── Pipfile
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   └── requirements.txt
+│   └── cdk
+│       ├── __init__.py
+│       ├── cdk.json
+│       ├── cdk.py
+│       ├── requirements.txt
+│       └── stack.py
+├── serverless
+│   ├── app.py
+│   ├── package.json
+│   ├── requirements.txt
+│   └── serverless.yml
+├── .gitignore
+└── README.md
 ```
 
 ## Prerequisites
@@ -26,10 +35,10 @@ This project demonstrates how to deploy a FastAPI application as a serverless fu
 - Docker (for local development and asset bundling)
 - Python package management(pipenv (`brew install pipenv`) or uv (`brew install uv`))
 
-### Deployment
+### Deployment using CDK
 
 ```bash
-$ git clone https://github.com/johnshumon/fastapi-lambda-cdk.git && cd fastapi-lambda-cdk
+$ git clone https://github.com/johnshumon/fastapi-lambda-cdk.git && cd fastapi-lambda-cdk/cdk
 
 # Create and activate venv
 $ pipenv shell
@@ -49,4 +58,26 @@ $ cdk synth
 $ cdk deploy
 ```
 
-The deployment will output the API Gateway URL where your FastAPI application can be accessed e.g.: `https://<redacted>.execute-api.eu-west-1.amazonaws.com`
+### Deployment using Serverless
+
+```bash
+$ git clone https://github.com/johnshumon/fastapi-lambda-cdk.git && cd fastapi-lambda-cdk/serverless
+
+# Create and activate venv
+$ pipenv shell
+
+# confirm that venv python is beiong used
+$ pnpm install
+
+# export aws credentials as environment variables
+# becuase serverless got issue picking up SSO credentials or
+# SSO profile e.g. sls deploy --aws-profile <profile-name>
+$ export AWS_ACCESS_KEY_ID=<key>
+$ export AWS_SECRET_ACCESS_KEY=<secret>
+$ export AWS_SESSION_TOKEN=<token>
+
+# Install dependencies
+$ sls deploy
+```
+
+Either deployment should export the URL where your FastAPI application can be accessed e.g.: `https://<redacted>.execute-api.eu-west-1.amazonaws.com`

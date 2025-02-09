@@ -1,0 +1,24 @@
+service: fastapi-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  stackName: fastapi-serverless
+  region: ap-southeast-1
+  deploymentMethod: direct
+
+functions:
+  api:
+    handler: app.handler
+    name: fastapi-serverless-lambda
+    events:
+      - httpApi: '*'
+    package:
+      patterns:
+        - '!**/*'
+        - 'app.py'
+        - 'requirements.txt'
+
+plugins:
+  - serverless-python-requirements

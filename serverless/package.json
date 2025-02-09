@@ -1,0 +1,15 @@
+{
+  "name": "fastapi-serverless",
+  "version": "1.0.0",
+  "description": "FastApi app with serverless framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abu Shumon",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-python-requirements": "^6.1.1"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
